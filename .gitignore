@@ -1,0 +1,9 @@
+*/**/*.class
+*/**/*.html
+*/**/*.js
+*/**/*.css
+.classpath
+.project
+.settings/**
+doc/
+bin/
