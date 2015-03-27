@@ -1,12 +1,14 @@
 package main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import wrapper.FileReadWrapperIterable;
 import filter.Filter;
 import filter.FilterByDate;
 import filter.FilterByExtension;
@@ -17,7 +19,7 @@ public class Main {
 	public static final String FORMAT_DATE = "MM/dd/yy HH:mm";
 	public static final DateFormat formatter = new SimpleDateFormat(FORMAT_DATE);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		System.out.println("Введите путь к директории");
 		Scanner sc = new Scanner(System.in);
 		String path = sc.nextLine();
@@ -73,6 +75,20 @@ public class Main {
 			e.printStackTrace();
 		} finally {
 			sc.close();
+		}
+
+		
+		FileReadWrapperIterable frwI = new FileReadWrapperIterable("text.txt");
+		int i = 0;
+		for(String s: frwI) {
+			//let's assume that your file has more than 2 lines
+			if(i == 2) {
+				for(String ss: frwI) {
+					System.out.println("Inner sout: " + ss);
+				}
+			}
+			System.out.println(s);
+			i++;
 		}
 
 	}

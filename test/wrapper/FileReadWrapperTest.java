@@ -7,22 +7,22 @@ import org.junit.Test;
 public class FileReadWrapperTest {
 	@Test(expected = FileNotFoundException.class)
 	public void fileReadWrapperFileNotFound() throws FileNotFoundException {
-		new FileReadWrapper("test.in");
+		new FileReadWrapperIterator("test.in");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void fileReadWrapperIllegalArgument() throws FileNotFoundException {
-		new FileReadWrapper("bin");
+		new FileReadWrapperIterator("bin");
 	}
 	
 	@Test
 	public void fileReadWrapper() throws FileNotFoundException {
-		new FileReadWrapper("text.txt");
+		new FileReadWrapperIterator("text.txt");
 	}
 	
 	@Test
 	public void iterator() throws FileNotFoundException {
-		FileReadWrapper file = new FileReadWrapper("text.txt");
+		FileReadWrapperIterable file = new FileReadWrapperIterable("text.txt");
 		for(String line : file){
 			
 		}
