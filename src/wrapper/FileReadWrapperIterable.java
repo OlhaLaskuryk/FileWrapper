@@ -42,6 +42,8 @@ public class FileReadWrapperIterable implements Iterable<String>{
 	}
 	
 	private class IteratorFileRead<T> implements Iterator<String>{
+		Scanner scI;
+		
 		public IteratorFileRead() {
 			try {
 				scI = new Scanner(new FileReader(file));
@@ -49,8 +51,7 @@ public class FileReadWrapperIterable implements Iterable<String>{
 				e.printStackTrace();
 			}
 		}
-
-		Scanner scI;
+		
 		@Override
 		public boolean hasNext() {
 			return scI.hasNextLine();
